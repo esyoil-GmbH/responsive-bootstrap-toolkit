@@ -5,7 +5,15 @@
  * Version:   2.6.3 (2016-06-21)
  * Origin:    https://github.com/maciej-gurban/responsive-bootstrap-toolkit
  */
-var ResponsiveBootstrapToolkit = (function($){
+(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory(require('jquery'));
+    } else {
+        root.ResponsiveBootstrapToolkit = factory(root.jQuery);
+    }
+}(this, function($){
 
     // Internal methods
     var internal = {
@@ -232,8 +240,4 @@ var ResponsiveBootstrapToolkit = (function($){
 
     return self;
 
-})(jQuery);
-
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = ResponsiveBootstrapToolkit;
-}
+}));
